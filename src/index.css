@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Style pour le fond d'écran Bliss */
+.bliss-bg {
+  /* Image de fond Bliss - Placez votre image bliss.jpg ou bliss.png dans le dossier public/ */
+  background-image: url("./public/bliss.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* Couleur de fallback en cas d'image non disponible */
+  background-color: #87ceeb;
+}
+
+/* Alternative si vous utilisez PNG */
+.bliss-bg-png {
+  background-image: url("/bliss.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #87ceeb;
+}
+
+/* Style Aero Glass pour Vista */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Style pour les fenêtres XP */
+.window-xp {
+  border: 2px outset #c0c0c0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Style pour les fenêtres Vista */
+.window-vista {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar style Windows */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-left: 1px solid #c0c0c0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 2px solid #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
