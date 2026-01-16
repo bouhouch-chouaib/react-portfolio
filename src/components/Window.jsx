@@ -1,33 +1,38 @@
-import React, { useState, useEffect } from 'react'
-import { motion, useMotionValue } from 'framer-motion'
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useMotionValue } from 'framer-motion';
 
 const Window = ({ id, title, icon, children, onClose, onMinimize, isMinimized, style = 'xp', zIndex = 100 }) => {
-  const [isDragging, setIsDragging] = useState(false)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
+  const [isDragging, setIsDragging] = useState(false);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const windowRef = useRef(null);
 
-  // Calculer la position centrée au montage
+  // Calculer la position centrée dynamiquement au montage
   useEffect(() => {
-    const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1920
-    const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 1080
-    const taskbarHeight = 40 // Hauteur de la barre des tâches
-    const minWindowWidth = 400
-    const minWindowHeight = 300
-    
-    // Centrer la fenêtre horizontalement et verticalement
-    const centerX = (windowWidth - minWindowWidth) / 2
-    const centerY = (windowHeight - taskbarHeight - minWindowHeight) / 2
-    
-    x.set(centerX)
-    y.set(centerY)
-  }, [x, y])
+    if (windowRef.current) {
+      const desktopWidth = window.innerWidth;
+      const desktopHeight = window.innerHeight;
+      const taskbarHeight = 40; // Hauteur de la barre des tâches
+
+      const actualWindowWidth = windowRef.current.offsetWidth;
+      const actualWindowHeight = windowRef.current.offsetHeight;
+
+      // Centrer la fenêtre en se basant sur sa taille réelle
+      const centerX = (desktopWidth - actualWindowWidth) / 2;
+      const centerY = (desktopHeight - taskbarHeight - actualWindowHeight) / 2;
+      
+      x.set(Math.max(0, centerX)); // Empêche les positions négatives
+      y.set(Math.max(0, centerY));
+    }
+  }, [x, y]);
 
   if (isMinimized) {
-    return null
+    return null;
   }
 
   return (
     <motion.div
+      ref={windowRef} // Ajout de la ref pour mesurer l'élément
       drag
       dragMomentum={false}
       dragElastic={0}
