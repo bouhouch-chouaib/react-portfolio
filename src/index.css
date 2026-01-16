@@ -18,7 +18,7 @@ body {
 /* Style pour le fond d'écran Bliss */
 .bliss-bg {
   /* Image de fond Bliss - Placez votre image bliss.jpg ou bliss.png dans le dossier public/ */
-  background-image: url("./public/bliss.png");
+  background-image: url("/react-portfolio/public/bliss.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
