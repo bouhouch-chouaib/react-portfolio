@@ -17,23 +17,14 @@ body {
 
 /* Style pour le fond d'écran Bliss */
 .bliss-bg {
-  /* Image de fond Bliss - Placez votre image bliss.jpg ou bliss.png dans le dossier public/ */
-  background-image: url("/react-portfolio/public/bliss.png");
+  /* Le chemin commence par "/" pour pointer vers la racine du dossier 'public'
+     Vite le transformera automatiquement en /react-portfolio/bliss.png lors du build. */
+  background-image: url("/bliss.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   /* Couleur de fallback en cas d'image non disponible */
-  background-color: #87ceeb;
-}
-
-/* Alternative si vous utilisez PNG */
-.bliss-bg-png {
-  background-image: url("/bliss.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   background-color: #87ceeb;
 }
 
